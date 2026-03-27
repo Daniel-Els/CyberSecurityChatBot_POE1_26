@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Media;
 
 namespace CyberSecurityChatBot
 {
@@ -13,6 +14,8 @@ namespace CyberSecurityChatBot
         // Main chatbot method
         static void StartChatbot()
         {
+            PlayGreeting(); // 🔊 Play voice greeting first
+
             Console.WriteLine("=====================================");
             Console.WriteLine("  Cybersecurity Awareness Chatbot");
             Console.WriteLine("=====================================\n");
@@ -31,6 +34,20 @@ namespace CyberSecurityChatBot
 
             // Start conversation loop
             ChatLoop(userName);
+        }
+
+        // 🔊 Voice greeting method
+        static void PlayGreeting()
+        {
+            try
+            {
+                SoundPlayer player = new SoundPlayer("welcome.wav");
+                player.PlaySync(); // waits until audio finishes
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Audio file could not be played.");
+            }
         }
 
         // Chat loop method
