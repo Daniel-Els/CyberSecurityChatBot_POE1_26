@@ -41,12 +41,15 @@ namespace CyberSecurityChatBot
         {
             try
             {
-                SoundPlayer player = new SoundPlayer("welcome.wav");
-                player.PlaySync(); // waits until audio finishes
+                string path = AppDomain.CurrentDomain.BaseDirectory + "welcome.wav";
+                SoundPlayer player = new SoundPlayer(path);
+                player.Load(); // ensures file is loaded properly
+                player.PlaySync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Console.WriteLine("Audio file could not be played.");
+                Console.WriteLine(ex.Message); // helps debugging
             }
         }
 
