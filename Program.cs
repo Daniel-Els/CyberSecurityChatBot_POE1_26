@@ -15,6 +15,7 @@ namespace CyberSecurityChatBot
         static void StartChatbot()
         {
             PlayGreeting(); // 🔊 Play voice greeting first
+            DisplayLogo(); // 🤖 ADDED (ASCII logo)
 
             Console.WriteLine("=====================================");
             Console.WriteLine("  Cybersecurity Awareness Chatbot");
@@ -51,6 +52,24 @@ namespace CyberSecurityChatBot
                 Console.WriteLine("Audio file could not be played.");
                 Console.WriteLine(ex.Message); // helps debugging
             }
+        }
+
+        // ASCII robot head
+        static void DisplayLogo()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            Console.WriteLine(@"
+            _____________________
+           |                     |
+          [|     []       []     |]
+          [|                     |]
+           |    [___________]    |
+           |_____________________|
+            
+            ");
+
+            Console.ResetColor();
         }
 
         // Chat loop method
